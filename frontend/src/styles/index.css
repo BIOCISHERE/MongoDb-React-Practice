@@ -1,0 +1,28 @@
+/*
+  General Styles used on every website (Don't Repeat Yourself)
+*/
+
+.fauxColor {
+  background-color: rgb(236, 73, 48) !important;
+}
+
+.fauxText {
+  color: white;
+  text-decoration: none;
+}
+
+.fauxFooter {
+  background-color: rgb(217, 217, 217);
+}
+
+.fauxLetters {
+  color: rgb(236, 73, 48);
+}
+
+.fauxBorder {
+  border-color: rgb(236, 73, 48) !important;
+}
+
+.cartCenterVertically {
+  margin-top: 2rem;
+}
