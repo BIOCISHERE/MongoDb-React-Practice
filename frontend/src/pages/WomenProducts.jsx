@@ -76,7 +76,36 @@ const WomenProducts = () => {
 
   return (
     <div className="container-fluid">
-      <h1>Women Products</h1>
+      <div className="row">
+        <div className="col-2 border border-dark-subtle rounded-end">
+          <h4>Womenswear</h4>
+          <div className="container-fluid my-1">
+            <h6>Type Of Garment</h6>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="TshirtCheck"
+                onClick={() => setIsTshirt(!isTshirt)}
+              />
+              <label className="form-check-label" htmlFor="TshirtCheck">
+                T-shirts
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="SweatersCheck"
+                onClick={() => setIsSweaters(!isSweaters)}
+              />
+              <label className="form-check-label" htmlFor="SweatersCheck">
+                Sweaters
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
