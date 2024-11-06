@@ -103,6 +103,127 @@ const WomenProducts = () => {
                 Sweaters
               </label>
             </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="PantsCheck"
+                onClick={() => setIsPants(!isPants)}
+              />
+              <label className="form-check-label" htmlFor="PantsCheck">
+                Pants
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="DressesCheck"
+                onClick={() => setIsDresses(!isDresses)}
+              />
+              <label className="form-check-label" htmlFor="DressesCheck">
+                Dresses
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="JeansCheck"
+                onClick={() => setIsJeans(!isJeans)}
+              />
+              <label className="form-check-label" htmlFor="JeansCheck">
+                Jeans
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="PursesCheck"
+                onClick={() => setIsPurses(!isPurses)}
+              />
+              <label className="form-check-label" htmlFor="PursesCheck">
+                Purses
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="WalletsCheck"
+                onClick={() => setIsWallets(!isWallets)}
+              />
+              <label className="form-check-label" htmlFor="WalletsCheck">
+                Wallets
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="BeltsCheck"
+                onClick={() => setIsBelts(!isBelts)}
+              />
+              <label className="form-check-label" htmlFor="BeltsCheck">
+                Belts
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="ScarfsCheck"
+                onClick={() => setIsScarfs(!isScarfs)}
+              />
+              <label className="form-check-label" htmlFor="ScarfsCheck">
+                Scarfs
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="PantiesCheck"
+                onClick={() => setIsPanties(!isPanties)}
+              />
+              <label className="form-check-label" htmlFor="PantiesCheck">
+                Panties
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="BrasCheck"
+                onClick={() => setIsBras(!isBras)}
+              />
+              <label className="form-check-label" htmlFor="BrasCheck">
+                Bras
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="PantysCheck"
+                onClick={() => setIsPantys(!isPantys)}
+              />
+              <label className="form-check-label" htmlFor="PantysCheck">
+                Pantys
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="SocksCheck"
+                onClick={() => setIsSocks(!isSocks)}
+              />
+              <label className="form-check-label" htmlFor="SocksCheck">
+                Socks
+              </label>
+            </div>
           </div>
         </div>
       </div>
