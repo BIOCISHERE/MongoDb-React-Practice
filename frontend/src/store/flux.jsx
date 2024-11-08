@@ -27,6 +27,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Error loading message from backend", error);
         }
       },
+      linkManager: (num) => {
+        return `/products/${num}`;
+      },
+      returnFormated: (value) => {
+        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      },
     },
   };
 };
