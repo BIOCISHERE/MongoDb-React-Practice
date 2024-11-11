@@ -1,4 +1,6 @@
 import axios from "axios";
+import { FaRegStar, FaStar } from "react-icons/fa";
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -32,6 +34,69 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       returnFormated: (value) => {
         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      },
+      turnRating: (info) => {
+        if (info == 0) {
+          return (
+            <>
+              <FaRegStar />
+              <FaRegStar />
+              <FaRegStar />
+              <FaRegStar />
+              <FaRegStar />
+            </>
+          );
+        } else if (info == 1) {
+          return (
+            <>
+              <FaStar />
+              <FaRegStar />
+              <FaRegStar />
+              <FaRegStar />
+              <FaRegStar />
+            </>
+          );
+        } else if (info == 2) {
+          return (
+            <>
+              <FaStar />
+              <FaStar />
+              <FaRegStar />
+              <FaRegStar />
+              <FaRegStar />
+            </>
+          );
+        } else if (info == 3) {
+          return (
+            <>
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaRegStar />
+              <FaRegStar />
+            </>
+          );
+        } else if (info == 4) {
+          return (
+            <>
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaRegStar />
+            </>
+          );
+        } else {
+          return (
+            <>
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+            </>
+          );
+        }
       },
     },
   };
