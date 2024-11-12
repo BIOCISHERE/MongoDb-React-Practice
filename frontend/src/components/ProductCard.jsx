@@ -15,9 +15,9 @@ const ProductCard = (props) => {
             <div className="d-flex">
               <span className="card-text me-auto">${actions.returnFormated(props.cost)}</span>
             </div>
-            <span className="card-text fauxLetters">
-              {/* Create the func turnRating in the flux context and use it here with props.rating */}
-            </span>
+            <span className="card-text fauxLetters">{actions.turnRating(props.rating)}</span>
+            <span className="card-text ms-1">({props.ratingVotes})</span>
+            <br />
           </div>
         </div>
       </Link>
