@@ -13,7 +13,7 @@ const ProductCard = (props) => {
           <div className="card-body">
             <h5 className="card-title">{props.name}</h5>
             <div className="d-flex">
-              <span className="card-text me-auto">${actions.returnFormated(props.cost)}</span>
+              <span className="card-text me-auto">${actions.returnFormated(props.price)}</span>
             </div>
             <span className="card-text fauxLetters">{actions.turnRating(props.rating)}</span>
             <span className="card-text ms-1">({props.ratingVotes})</span>

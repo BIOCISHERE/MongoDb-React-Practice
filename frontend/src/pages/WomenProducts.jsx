@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import Context from "../store/Context.jsx";
+import ProductCard from "../components/ProductCard.jsx";
 
 const WomenProducts = () => {
   const { store, actions } = useContext(Context);
@@ -64,13 +65,29 @@ const WomenProducts = () => {
       !isPantys &&
       !isSocks
     ) {
-      // Here map womenProducts from the flux context, and to map them use ProductCard component
-      // The ProductCard component is not made yet.
-      // Here the ProductCard class is going to be "col".
+      return store.womenProducts.map((item, index) => (
+        <ProductCard
+          key={index}
+          cardClass="col"
+          cardId={item.id}
+          name={item.name}
+          price={item.price}
+          rating={item.rating}
+          ratingVotes={item.ratingVotes}
+        />
+      ));
     } else {
-      // Here map womenProducts from the flux context, and to map them use ProductCard component
-      // The ProductCard component is not made yet.
-      // Here the ProductCard class is going to be determined by turnClass function.
+      return store.womenProducts.map((item, index) => (
+        <ProductCard
+          key={index}
+          cardClass={turnClass(item)}
+          cardId={item.id}
+          name={item.name}
+          price={item.price}
+          rating={item.rating}
+          ratingVotes={item.ratingVotes}
+        />
+      ));
     }
   };
 
