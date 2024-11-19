@@ -98,6 +98,16 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
         }
       },
+      fetchProducts: () => {
+        axios
+          .get(`http://localhost:8080/api/products/`)
+          .then((products) => {
+            console.log(products.data.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      },
     },
   };
 };

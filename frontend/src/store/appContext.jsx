@@ -17,7 +17,7 @@ export default function InjectContext(PassedComponent) {
     );
 
     useEffect(() => {
-      console.log("working");
+      state.actions.fetchProducts();
     }, []);
 
     return (
