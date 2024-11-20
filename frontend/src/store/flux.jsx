@@ -98,15 +98,81 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
         }
       },
-      fetchProducts: () => {
+      fetchProducts: async () => {
+        const store = getStore();
         axios
           .get(`http://localhost:8080/api/products/`)
           .then((products) => {
-            console.log(products.data.data);
+            setStore({ fullResponse: products.data.data });
+
+            store.fullResponse.map((product) => {
+              if (product.productFor == "Women") {
+                let womenArray = store.womenProducts;
+                let womenUpdate = womenArray.concat(product);
+
+                setStore({ womenProducts: womenUpdate });
+                return true;
+              } else if (product.productFor == "Men") {
+                let menArray = store.menProducts;
+                let menUpdate = menArray.concat(product);
+
+                setStore({ menProducts: menUpdate });
+                return true;
+              } else if (product.productFor == "Footwear") {
+                let footwearArray = store.footwearProducts;
+                let footwearUpdate = footwearArray.concat(product);
+
+                setStore({ footwearProducts: footwearUpdate });
+                return true;
+              } else {
+                console.error("filterProducts failed to set the store", product.id);
+                return false;
+              }
+            });
           })
           .catch((error) => {
             console.error(error);
+            return false;
           });
+      },
+      filterProducts: () => {
+        const store = getStore();
+
+        store.fullResponse.map((product) => {
+          if (product.productFor == "Women") {
+            let womenArray = store.womenProducts;
+            let womenUpdate = womenArray.concat(product);
+            console.log(womenUpdate);
+
+            setStore({ womenProducts: womenUpdate });
+            return true;
+          } else if (product.productFor == "Men") {
+            let menArray = store.menProducts;
+            let menUpdate = menArray.concat(product);
+
+            setStore({ menProducts: menUpdate });
+            return true;
+          } else if (product.productFor == "Footwear") {
+            let footwearArray = store.footwearProducts;
+            let footwearUpdate = footwearArray.concat(product);
+
+            setStore({ footwearProducts: footwearUpdate });
+            return true;
+          } else {
+            console.error("filterProducts failed to set the store", product.id);
+            return false;
+          }
+        });
+      },
+      readyProducts: () => {
+        try {
+          getActions().fetchProducts();
+          getActions().filterProducts();
+          return true;
+        } catch (error) {
+          console.error(error);
+          return false;
+        }
       },
     },
   };
