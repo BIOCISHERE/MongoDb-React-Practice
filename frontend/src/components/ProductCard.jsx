@@ -7,7 +7,7 @@ const ProductCard = (props) => {
   const { store, actions } = useContext(Context);
   return (
     <div className={props.cardClass}>
-      <Link to={actions.linkManager(props.cardId)} className="text-decoration-none">
+      <Link to={actions.linkManager(props.cardId)} className="text-decoration-none text-dark">
         <div className="card-my-1">
           <img className="card-image-top img-fluid" src={TshirtURL} alt="Product image" />
           <div className="card-body">

@@ -243,6 +243,13 @@ const WomenProducts = () => {
             </div>
           </div>
         </div>
+        <div className="col-10">
+          <div className="container-fluid">
+            <div className="row row-cols-xm-1 row-cols-sm-2 row-cols-md-4 g-4">
+              {returnProducts()}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

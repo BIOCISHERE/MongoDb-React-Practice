@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
+import cors from "cors";
 
 import productRoutes from "./routes/product.route.js";
 
@@ -11,6 +12,19 @@ const PORT = process.env.PORT || 3001;
 app.disable("x-powered-by");
 
 app.use(express.json()); // Allows to accept JSON data in the req.body
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      const ACCEPTED_ORIGINS = ["http://localhost:8080", "http://localhost:5173"];
+
+      if (ACCEPTED_ORIGINS.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not Allowed by CORS"));
+      }
+    },
+  })
+);
 
 app.use("/api/products", productRoutes);
 
