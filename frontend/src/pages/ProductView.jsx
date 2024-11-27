@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Context from "../store/Context.jsx";
 import { Link, useParams } from "react-router-dom";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import TshirtURL from "../assets/t-shirt.png";
 
 const ProductView = () => {
   const { store, actions } = useContext(Context);
@@ -123,6 +125,31 @@ const ProductView = () => {
     }
   };
 
+  const manageFav = () => {
+    if (isFav) {
+      return <FaHeart type="button" onClick={() => setIsFav(!isFav)} />;
+    } else {
+      return <FaRegHeart type="button" onClick={() => setIsFav(!isFav)} />;
+    }
+  };
+
+  const manageButton = (itemId, amnt) => {
+    {
+      /*
+      This func manages the add to shopping cart button.
+      Later we need to send the other info like the size to the shopping cart.
+       */
+    }
+    if (isProduct.productFor == "Footwear") {
+      return [
+        actions.plusCustomToCart(itemId, amnt),
+        actions.changeCartSize(itemId, isFootwearSize),
+      ];
+    } else {
+      return [actions.plusCustomToCart(itemId, amnt), actions.changeCartSize(itemId, isSize)];
+    }
+  };
+
   useEffect(() => {
     store.fullResponse.find((x) => {
       x.id === id ? setIsProduct(x) : console.log("fail");
@@ -131,8 +158,63 @@ const ProductView = () => {
 
   return (
     <div className="container-fluid">
-      <h1>Product View</h1>
-      <h4>{isProduct.id}</h4>
+      <div className="row">
+        <div className="col-11 mx-auto">
+          <div className="container-fluid my-2">{manageLinks()}</div>
+          <div className="container-fluid my-4">
+            <div className="row">
+              <div className="col-8 text-center">
+                <img className="img-fluid" src={TshirtURL} alt="Product image" />
+              </div>
+              <div className="col-4 border border-dark-subbtle rounded">
+                <div className="d-flex mt-2">
+                  <span className="fs-2 me-auto text-break">{isProduct.name}</span>
+                  <span className="fauxLetters fs-2">{manageFav()}</span>
+                </div>
+                <div className="d-flex">
+                  <span className="mx-1 fs-5">{isProduct.rating}</span>
+                  <span className="fauxLetters mx-1">{actions.turnRating(isProduct.rating)}</span>
+                  <span className="mx-1 fs-5">({isProduct.ratingVotes})</span>
+                </div>
+                <div className="d-flex mt-2">
+                  <span className="fs-1">${actions.returnFormated(Number(isProduct.price))}</span>
+                </div>
+                <div className="container-fluid mt-2">{manageSelect()}</div>
+                <div className="container-fluid mt-2 mb-4">
+                  <label htmlFor="selectAmount">Select amount:</label>
+                  <select
+                    id="selectAmount"
+                    className="form-select border border-dark fauxBorder w-50"
+                    aria-label="Select how many"
+                    name="selectedAmount"
+                    onChange={(e) => setIsAmount(e.target.value)}
+                  >
+                    <option defaultValue>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                </div>
+                <div className="container-fluid mt-2">
+                  <button
+                    type="button"
+                    className="btn btn-dark fauxColor w-100"
+                    onClick={() => manageButton(isProduct.id, isAmount)}
+                  >
+                    Add to cart {store.cart[isProduct.id] > 0 && <>({store.cart[isProduct.id]})</>}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
