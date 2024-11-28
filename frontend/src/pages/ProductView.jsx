@@ -18,15 +18,15 @@ const ProductView = () => {
     if (isProduct.productFor == "Women") {
       return (
         <span>
-          <Link to="/" className="mx-1">
+          <Link to="/" className="mx-1 fauxLetters">
             Home
           </Link>
           {">"}
-          <Link to="/women-products" className="mx-1">
+          <Link to="/women-products" className="mx-1 fauxLetters">
             Women
           </Link>
           {">"}
-          <Link to="#" className="mx-1">
+          <Link to="#" className="mx-1 fauxLetters">
             {isProduct.name}
           </Link>
         </span>
@@ -69,11 +69,8 @@ const ProductView = () => {
   };
 
   const manageSelect = () => {
-    {
-      /*
-      This func manages the select input depending of the productFor. 
-       */
-    }
+    // This func manages the select input depending of the productFor.
+
     if (isProduct.productFor == "Footwear") {
       return (
         <>
@@ -134,12 +131,6 @@ const ProductView = () => {
   };
 
   const manageButton = (itemId, amnt) => {
-    {
-      /*
-      This func manages the add to shopping cart button.
-      Later we need to send the other info like the size to the shopping cart.
-       */
-    }
     if (isProduct.productFor == "Footwear") {
       return [
         actions.plusCustomToCart(itemId, amnt),

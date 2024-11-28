@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage.jsx";
 import NotFound from "./components/NotFound.jsx";
 import InjectContext from "./store/appContext.jsx";
 import WomenProducts from "./pages/WomenProducts.jsx";
+import MenProducts from "./pages/MenProducts.jsx";
 import ProductView from "./pages/ProductView.jsx";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/women-products" element={<WomenProducts />} />
+        <Route path="/men-products" element={<MenProducts />} />
         <Route path="/products/:id" element={<ProductView />} />
         <Route path="*" element={<NotFound />} />
       </Route>
