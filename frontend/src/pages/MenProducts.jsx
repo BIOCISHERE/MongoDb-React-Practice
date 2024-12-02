@@ -214,9 +214,9 @@ const MenProducts = () => {
           </div>
         </div>
         <div className="col-10">
-          <div className="container-fluid">
+          <div className="container-fluid my-3">
             <div className="row row-cols-xm-1 row-cols-sm-2 row-cols-md-4 g-4">
-              {/* Here use returnProducts func */}
+              {returnProducts()}
             </div>
           </div>
         </div>
