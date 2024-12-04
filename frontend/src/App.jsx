@@ -12,6 +12,7 @@ import InjectContext from "./store/appContext.jsx";
 import WomenProducts from "./pages/WomenProducts.jsx";
 import MenProducts from "./pages/MenProducts.jsx";
 import ProductView from "./pages/ProductView.jsx";
+import FootwearProducts from "./pages/FootwearProducts.jsx";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -20,6 +21,7 @@ const App = () => {
         <Route index element={<HomePage />} />
         <Route path="/women-products" element={<WomenProducts />} />
         <Route path="/men-products" element={<MenProducts />} />
+        <Route path="/footwear-products" element={<FootwearProducts />} />
         <Route path="/products/:id" element={<ProductView />} />
         <Route path="*" element={<NotFound />} />
       </Route>

@@ -53,16 +53,65 @@ const FootwearProducts = () => {
   };
 
   return (
-    <div className="container-fluid my-1">
+    <div className="container-fluid">
       <div className="row">
         <div className="col-2 border border-dark-subtle rounded-end">
           <h4>Footwear</h4>
           <div className="container-fluid my-1">
             <h6>Type of footwear</h6>
-            {/* Under this add the checkboxes */}
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="urbanCheck"
+                onClick={() => setIsUrban(!isUrban)}
+              />
+              <label className="form-check-label" htmlFor="urbanCheck">
+                Urban Sneakers
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="sportsCheck"
+                onClick={() => setIsSport(!isSport)}
+              />
+              <label className="form-check-label" htmlFor="sportsCheck">
+                Sport Sneakers
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="shoesCheck"
+                onClick={() => setIsShoe(!isShoe)}
+              />
+              <label className="form-check-label" htmlFor="shoesCheck">
+                Shoes
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input border border-dark"
+                type="checkbox"
+                id="sandalsCheck"
+                onClick={() => setIsSandals(!isSandals)}
+              />
+              <label className="form-check-label" htmlFor="sandalsCheck">
+                Sandals
+              </label>
+            </div>
           </div>
         </div>
-        <div className="col-10"></div>
+        <div className="col-10">
+          <div className="container-fluid my-3">
+            <div className="row row-cols-xm-1 row-cols-sm-2 row-cols-md-4 g-4">
+              {returnProducts()}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
