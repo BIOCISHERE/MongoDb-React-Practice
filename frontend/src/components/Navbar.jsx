@@ -127,7 +127,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link fauxText" to="/">
+              <Link className="nav-link fauxText" to="/shopping-cart">
                 <span className="me-1">(CART)</span>
                 Cart
               </Link>
