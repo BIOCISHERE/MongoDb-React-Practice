@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Context from "../store/Context.jsx";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import TshirtURL from "../assets/t-shirt.png";
 
@@ -141,9 +141,14 @@ const ProductView = () => {
     }
   };
 
+  const productTotal = () => {
+    const total = store.cart[id] > 0 && <>({store.cart[id]})</>;
+    return total;
+  };
+
   useEffect(() => {
     store.fullResponse.find((x) => {
-      x.id === id ? setIsProduct(x) : console.log("fail");
+      x.id === id ? setIsProduct(x) : "";
     });
   }, []);
 
@@ -198,7 +203,7 @@ const ProductView = () => {
                     className="btn btn-dark fauxColor w-100"
                     onClick={() => manageButton(isProduct.id, isAmount)}
                   >
-                    Add to cart {store.cart[isProduct.id] > 0 && <>({store.cart[isProduct.id]})</>}
+                    Add to cart {productTotal()}
                   </button>
                 </div>
               </div>

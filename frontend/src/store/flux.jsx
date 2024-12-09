@@ -100,6 +100,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       fetchProducts: async () => {
         const store = getStore();
+        let defaultCart = {};
+        let defaultCarSize = {};
+
         axios
           .get(`http://localhost:8080/api/products/`)
           .then((products) => {
@@ -129,52 +132,21 @@ const getState = ({ getStore, getActions, setStore }) => {
                 return false;
               }
             });
+
+            store.fullResponse.map((product) => {
+              defaultCart[product.id] = 0;
+            });
+
+            store.fullResponse.map((product) => {
+              defaultCarSize[product.id] = 0;
+            });
+
+            setStore({ cart: defaultCart, cartSizes: defaultCarSize });
           })
           .catch((error) => {
             console.error(error);
             return false;
           });
-      },
-      filterProducts: () => {
-        const store = getStore();
-
-        store.fullResponse.map((product) => {
-          if (product.productFor == "Women") {
-            let womenArray = store.womenProducts;
-            let womenUpdate = womenArray.concat(product);
-            console.log(womenUpdate);
-
-            setStore({ womenProducts: womenUpdate });
-            return true;
-          } else if (product.productFor == "Men") {
-            let menArray = store.menProducts;
-            let menUpdate = menArray.concat(product);
-
-            setStore({ menProducts: menUpdate });
-            return true;
-          } else if (product.productFor == "Footwear") {
-            let footwearArray = store.footwearProducts;
-            let footwearUpdate = footwearArray.concat(product);
-
-            setStore({ footwearProducts: footwearUpdate });
-            return true;
-          } else {
-            console.error("filterProducts failed to set the store", product.id);
-            return false;
-          }
-        });
-      },
-      readyProducts: () => {
-        try {
-          getActions().fetchProducts();
-          getActions().filterProducts();
-          getActions().getDefaultCart();
-          getActions().getDefaultCartSize();
-          return true;
-        } catch (error) {
-          console.error(error);
-          return false;
-        }
       },
       returnTotal: (price, id) => {
         const store = getStore();
@@ -183,19 +155,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         const total = price * store.cart[id];
 
         return actions.returnFormated(total);
-      },
-      getDefaultCart: () => {
-        {
-          /* This func must execute after the products fetch */
-        }
-        const store = getStore();
-        let defaultCart = {};
-
-        store.fullResponse.map((product) => {
-          defaultCart[product.id] = 0;
-        });
-
-        setStore({ cart: defaultCart });
       },
       plusOneToCart: (itemId) => {
         const store = getStore();
@@ -259,19 +218,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
 
         return totalProduct;
-      },
-      getDefaultCartSize: () => {
-        {
-          /* This func must execute after the product fetch */
-        }
-        const store = getStore();
-        let defaultCarSize = {};
-
-        store.fullResponse.map((product) => {
-          defaultCarSize[product.id] = 0;
-        });
-
-        setStore({ cartSizes: defaultCarSize });
       },
       changeCartSize: (id, size) => {
         const store = getStore();
