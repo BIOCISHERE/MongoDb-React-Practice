@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import fauxAtelierLogo from "../assets/faux_atelier_logo.png";
 import { Link, NavLink } from "react-router-dom";
 import Context from "../store/Context.jsx";
+import { FaUser, FaTruck, FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -65,7 +66,9 @@ const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span className="me-1">(USER)</span>
+                <span className="me-1">
+                  <FaUser />
+                </span>
                 User
               </a>
               <ul className="dropdown-menu">
@@ -117,7 +120,9 @@ const Navbar = () => {
             </li>
             <li className="nav-item me-1">
               <Link className="nav-link fauxText" to="/">
-                <span className="me-1">(TRUCK)</span>
+                <span className="me-1">
+                  <FaTruck />
+                </span>
                 My orders
               </Link>
             </li>
@@ -128,7 +133,9 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link className="nav-link fauxText" to="/shopping-cart">
-                <span className="me-1">(CART)</span>
+                <span className="me-1">
+                  <FaShoppingCart />
+                </span>
                 Cart
               </Link>
             </li>
