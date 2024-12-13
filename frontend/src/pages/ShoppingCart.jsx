@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Context from "../store/Context.jsx";
 import { Link } from "react-router-dom";
+import TshirtURL from "../assets/t-shirt.png";
 
 const ShoppingCart = () => {
   const { store, actions } = useContext(Context);
@@ -76,6 +77,30 @@ const ShoppingCart = () => {
                       <h4>Total</h4>
                     </div>
                   </div>
+                </div>
+                <div className="container-fluid mb-3">
+                  {/* Each product in the shopping cart will map a row in which all the info will be displayed horizontally */}
+                  {store.fullResponse.map((product, index) => {
+                    if (store.cart[product.id] > 0) {
+                      return (
+                        <div className="row border border-dark-subtle rounded" key={index}>
+                          <div className="col-6">
+                            {/* This is the WHOLE product div */}
+                            <div className="row border border-dark-subtle">
+                              <div className="col-3 my-auto">
+                                {/* This is the product IMG div */}
+                                <img className="img-fluid" src={TshirtURL} alt="..." />
+                              </div>
+                              <div className="col-9">
+                                {/* This is the product NAME div */}
+                                <h5 className="mt-3 text-break">{product.name}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+                  })}
                 </div>
               </div>
             ) : (
