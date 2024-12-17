@@ -58,7 +58,7 @@ const ShoppingCart = () => {
         <div className="row">
           <div className="col-8">
             {actions.getTotalCartPrice() > 0 ? (
-              // This will display when the shopping cart is not empty
+              // THIS WILL DISPLAY WHEN THE SHOPPING CART IS NOT EMPTY
               <div
                 className="container-fluid border border-dark-subtle rounded"
                 style={{ marginTop: "1rem", marginBottom: "1rem" }}
@@ -104,6 +104,7 @@ const ShoppingCart = () => {
                                   href="#offcanvasWarning"
                                   aria-controls="offcanvasWarning"
                                 >
+                                  {/* Clicking this "a" tag, will show an offcanvas to remove the product from the cart */}
                                   Remove product
                                 </a>
                                 <div
@@ -157,6 +158,41 @@ const ShoppingCart = () => {
                           </div>
                           <div className="col-2 border border-dark-subtle text-center">
                             {/* This is the PRICE div */}
+                            <h4 className="cartCenterVertically">
+                              ${actions.returnFormated(product.id)}
+                            </h4>
+                          </div>
+                          <div className="col-2 border border-dark-subtle">
+                            {/* This is the AMOUNT div */}
+                            <div className="container-fluid cartCenterVertically">
+                              <div className="d-flex mx-auto">
+                                <button
+                                  type="button"
+                                  className="btn btn-dark btn-sm me-1 fauxColor"
+                                  onClick={() => actions.minusOneToCart(product.id)}
+                                >
+                                  -
+                                </button>
+                                <input
+                                  value={store.cart[product.id]}
+                                  className="text-center"
+                                  style={{ width: "2rem" }}
+                                />
+                                <button
+                                  type="button"
+                                  className="btn btn-dark btn-sm me-1 fauxColor"
+                                  onClick={() => actions.plusOneToCart(product.id)}
+                                >
+                                  +
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-2 border border-dark-subtle text-center">
+                            {/* This is the TOTAL div */}
+                            <h4 className="cartCenterVertically">
+                              ${actions.returnTotal(product.price, product.id)}
+                            </h4>
                           </div>
                         </div>
                       );
@@ -165,10 +201,22 @@ const ShoppingCart = () => {
                 </div>
               </div>
             ) : (
-              "test"
+              // THIS WILL DISPLAY WHEN THE SHOPPING CART IS EMPTY
+              <div className="container-fluid">
+                <div
+                  className="row border border-dark-subtle text-center rounded"
+                  style={{ marginTop: "1rem", marginBottom: "1rem" }}
+                >
+                  <h2 style={{ marginTop: "8rem", marginBottom: "8rem" }}>
+                    Your shopping cart is empty.
+                  </h2>
+                </div>
+              </div>
             )}
           </div>
-          <div className="col-4"></div>
+          <div className="col-4" style={{ marginTop: "1rem", marginBottom: "5rem" }}>
+            {/* This is the SUBTOTAL, SHIPPING and TOTAL div */}
+          </div>
         </div>
       </div>
     </div>
