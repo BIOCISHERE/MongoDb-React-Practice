@@ -46,6 +46,14 @@ const ShoppingCart = () => {
     }
   };
 
+  const returnShoppingCartTotal = () => {
+    if (actions.getTotalProductInCart > 0) {
+      return actions.getTotalCartPrice() + returnShipping();
+    } else {
+      return 0;
+    }
+  };
+
   return (
     <div className="container-fluid">
       <div className="container-fluid text-center my-3">
@@ -159,7 +167,7 @@ const ShoppingCart = () => {
                           <div className="col-2 border border-dark-subtle text-center">
                             {/* This is the PRICE div */}
                             <h4 className="cartCenterVertically">
-                              ${actions.returnFormated(product.id)}
+                              ${actions.returnFormated(product.price)}
                             </h4>
                           </div>
                           <div className="col-2 border border-dark-subtle">
@@ -216,6 +224,75 @@ const ShoppingCart = () => {
           </div>
           <div className="col-4" style={{ marginTop: "1rem", marginBottom: "5rem" }}>
             {/* This is the SUBTOTAL, SHIPPING and TOTAL div */}
+            <div className="container-fluid border border-dark-subtle rounded">
+              <h3 className="mb-3">Purchase summary</h3>
+              <div className="d-flex mb-1">
+                <span className="me-auto fs-5">
+                  Product
+                  {actions.getTotalProductInCart() > 0 ? (
+                    <span>({actions.getTotalProductInCart()})</span>
+                  ) : (
+                    ""
+                  )}
+                </span>
+                <span className="fs-5 fw-bold">
+                  ${actions.returnFormated(actions.getTotalCartPrice())}
+                </span>
+              </div>
+              <div className="d-flex my-1">
+                <span className="me-auto fs-5">
+                  Shipping
+                  <span className="fs-6">({returnShippingRegion()})</span>
+                </span>
+                <span className="fs-5 fw-bold">${returnShipping()}</span>
+              </div>
+              <div className="form-check my-1">
+                <input
+                  className="form-check-input border border-dark"
+                  type="checkbox"
+                  id="changeShippingInput"
+                  onClick={() => setIsShowShipping(!isShowShipping)}
+                />
+                <label className="form-check-label fauxLetters" htmlFor="changeShippingInput">
+                  Change shipping region
+                </label>
+              </div>
+              <div className={isShowShipping ? "container-fluid" : "d-none"}>
+                <label htmlFor="selectShippingRegion" className="me-1">
+                  Select region:
+                </label>
+                <select
+                  id="selectShippingRegion"
+                  onChange={(e) => (
+                    setIsShippingRegion(e.target.value),
+                    actions.changeShippingRegion(e.target.value)
+                  )}
+                >
+                  <option value={1}>North america</option>
+                  <option value={2}>South america</option>
+                  <option value={3}>Antartica</option>
+                  <option value={4}>Africa</option>
+                  <option value={5}>Europe</option>
+                  <option value={6}>Asia</option>
+                  <option value={7}>Australia</option>
+                </select>
+              </div>
+              <div className="d-flex mt-1 mb-3">
+                <span className="me-auto fs-5">Total</span>
+                <span className="fs-5 fw-bold">${returnShoppingCartTotal()}</span>
+              </div>
+              <div className="container-fluid my-1 mb-2">
+                <button
+                  type="button"
+                  className="btn btn-dark fauxColor w-100"
+                  onClick={() => (
+                    console.log("isShipping", isShippingRegion), console.log("flux", shipping)
+                  )}
+                >
+                  Buy
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

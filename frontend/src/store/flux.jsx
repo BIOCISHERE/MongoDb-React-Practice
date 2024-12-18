@@ -229,7 +229,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         // This func goes through the shopping cart and adds the price times the amount of a product to get the total.
         for (const item in store.cart) {
           if (store.cart[item] > 0) {
-            let itemInfo = store.fullResponse.find((product) => product.id === Number(item));
+            let itemInfo = store.fullResponse.find((product) => product.id === item);
 
             totalCartPrice += store.cart[item] * itemInfo.price;
           }
