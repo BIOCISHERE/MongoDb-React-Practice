@@ -14,12 +14,14 @@ import MenProducts from "./pages/MenProducts.jsx";
 import ProductView from "./pages/ProductView.jsx";
 import FootwearProducts from "./pages/FootwearProducts.jsx";
 import ShoppingCart from "./pages/ShoppingCart.jsx";
+import SignUp from "./pages/SignUp.jsx";
 
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<HomePage />} />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="/women-products" element={<WomenProducts />} />
         <Route path="/men-products" element={<MenProducts />} />
         <Route path="/footwear-products" element={<FootwearProducts />} />
