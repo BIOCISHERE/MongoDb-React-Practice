@@ -14,10 +14,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    favorites: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-    },
+    favorites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+      },
+    ],
     adress: {
       type: String,
       required: false,
