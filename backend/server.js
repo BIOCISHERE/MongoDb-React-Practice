@@ -4,6 +4,7 @@ import { connectDB } from "./config/db.js";
 import cors from "cors";
 
 import productRoutes from "./routes/product.route.js";
+import userRoutes from "./routes/user.route.js";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use(
 );
 
 app.use("/api/products", productRoutes);
+app.use("/api/user", userRoutes);
 
 app.listen(PORT, () => {
   connectDB();
