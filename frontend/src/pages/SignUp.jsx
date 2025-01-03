@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Context from "../store/Context.jsx";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const SignUp = () => {
   const { store, actions } = useContext(Context);
@@ -18,13 +20,29 @@ const SignUp = () => {
   const redirectManager = () => {
     setTimeout(() => {
       redirect("/");
-    }, "5000");
+    }, "3000");
   };
 
   const signUpRequest = async (e) => {
     e.preventDefault();
-    {
-      /* Finish the User backend before continuing */
+    const { name, email, password } = data;
+    try {
+      const { data } = await axios.post("http://localhost:8080/api/user", {
+        name,
+        email,
+        password,
+      });
+
+      if (!data.success) {
+        toast.error(data.message);
+      } else {
+        setData({ name: "", email: "", password: "" });
+        toast.success("Login successful. Welcome!");
+        redirectManager();
+      }
+    } catch (error) {
+      toast.error("Unknown error occurred. Please try again later.");
+      console.log(error);
     }
   };
 
@@ -94,9 +112,9 @@ const SignUp = () => {
             </div>
             <div className="container-fluid text-center mx-auto">
               <button
-                type="button"
+                type="submit"
                 className="btn btn-dark fauxColor mb-2"
-                onClick={() => console.log(data)}
+                //onClick={() => console.log(data)}
               >
                 Sign up
               </button>
