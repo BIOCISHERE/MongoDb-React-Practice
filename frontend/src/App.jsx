@@ -15,6 +15,7 @@ import ProductView from "./pages/ProductView.jsx";
 import FootwearProducts from "./pages/FootwearProducts.jsx";
 import ShoppingCart from "./pages/ShoppingCart.jsx";
 import SignUp from "./pages/SignUp.jsx";
+import LogIn from "./pages/LogIn.jsx";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -22,6 +23,7 @@ const App = () => {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="log-in" element={<LogIn />} />
         <Route path="/women-products" element={<WomenProducts />} />
         <Route path="/men-products" element={<MenProducts />} />
         <Route path="/footwear-products" element={<FootwearProducts />} />

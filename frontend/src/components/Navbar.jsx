@@ -75,7 +75,7 @@ const Navbar = () => {
                 {!store.token ? (
                   <>
                     <li>
-                      <Link className="dropdown-item" to="/">
+                      <Link className="dropdown-item" to="/log-in">
                         Log-in
                       </Link>
                     </li>
