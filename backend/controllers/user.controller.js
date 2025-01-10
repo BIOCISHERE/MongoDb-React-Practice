@@ -1,6 +1,7 @@
-import { hashPassword } from "../auth.js";
+import { comparePassword, hashPassword } from "../auth.js";
 import User from "../models/user.model.js";
 
+// Return all users endpoint
 export const getUsers = async (req, res) => {
   try {
     const user = await User.find({});
@@ -11,6 +12,7 @@ export const getUsers = async (req, res) => {
   }
 };
 
+// Sign up endpoint
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -44,5 +46,23 @@ export const registerUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.json({ success: false, message: "Server error" });
+  }
+};
+
+// Log in endpoint
+export const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Check if user exist
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.json({ success: false, message: "No user found" });
+    }
+
+    // Check if passwords match
+    const doesMatch = await comparePassword(password, user.password);
+  } catch (error) {
+    console.log(error);
   }
 };
