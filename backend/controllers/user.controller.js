@@ -4,10 +4,14 @@ import User from "../models/user.model.js";
 // Return all users endpoint
 export const getUsers = async (req, res) => {
   try {
+    // Get all saved users
     const user = await User.find({});
+    // Return a response with all the users data
     res.json({ success: true, data: user });
   } catch (error) {
+    // If error, we print it into the console
     console.log("Error in fetching users:", error.message);
+    // Return a response, to indicate that something failed on the server side
     res.json({ success: false, message: "Server Error" });
   }
 };
@@ -42,9 +46,12 @@ export const registerUser = async (req, res) => {
     const newUser = new User({ name, email, password: hashedPassword });
     // Save the new user.
     await newUser.save();
+    // Return a response indicating that a new user have been successfully created
     return res.json({ success: true, message: "User created successfully" });
   } catch (error) {
+    // If error, we print it into the console
     console.log(error);
+    // Return a response, to indicate that something failed on the server side
     return res.json({ success: false, message: "Server error" });
   }
 };
@@ -53,15 +60,16 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-
     // Check if user exist
     const user = await User.findOne({ email });
     if (!user) {
       return res.json({ success: false, message: "No user found" });
     }
-
     // Check if passwords match
     const doesMatch = await comparePassword(password, user.password);
+    if (!doesMatch) {
+      return res.json({ success: false, message: "Incorrect password" });
+    }
   } catch (error) {
     console.log(error);
   }
