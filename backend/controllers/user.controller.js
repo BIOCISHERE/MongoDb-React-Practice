@@ -1,5 +1,6 @@
 import { comparePassword, hashPassword } from "../auth.js";
 import User from "../models/user.model.js";
+import jwt from "jsonwebtoken";
 
 // Return all users endpoint
 export const getUsers = async (req, res) => {
@@ -70,6 +71,16 @@ export const loginUser = async (req, res) => {
     if (!doesMatch) {
       return res.json({ success: false, message: "Incorrect password" });
     }
+
+    jwt.sign(
+      { email: user.email, id: user.id, name: user.name },
+      process.env.JWT_SECRET,
+      {},
+      (err, token) => {
+        if (err) throw err;
+        return res.cookie("token", token).json(user);
+      }
+    );
   } catch (error) {
     console.log(error);
   }
