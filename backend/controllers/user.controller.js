@@ -26,7 +26,7 @@ export const registerUser = async (req, res) => {
       return res.json({ success: false, message: "Name is required" });
     }
     // Check if the email is a empty string
-    if (email == "") {
+    if (!email) {
       return res.json({ success: false, message: "Email is required" });
     }
     // Check if email is already taken
@@ -61,6 +61,14 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
+    // Check if email was entered
+    if (!email) {
+      return res.json({ success: false, message: "Name is required" });
+    }
+    // Check is password was entered
+    if (!password) {
+      return res.json({ success: false, message: "Password is required" });
+    }
     // Check if user exist
     const user = await User.findOne({ email });
     if (!user) {
