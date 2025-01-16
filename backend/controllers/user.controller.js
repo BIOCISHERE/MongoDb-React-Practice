@@ -63,7 +63,7 @@ export const loginUser = async (req, res) => {
     const { email, password } = req.body;
     // Check if email was entered
     if (!email) {
-      return res.json({ success: false, message: "Name is required" });
+      return res.json({ success: false, message: "Email is required" });
     }
     // Check is password was entered
     if (!password) {
@@ -86,7 +86,11 @@ export const loginUser = async (req, res) => {
       {},
       (err, token) => {
         if (err) throw err;
-        return res.cookie("token", token).json(user);
+        return res.cookie("token", token).json({
+          success: true,
+          message: "Log in successful. Welcome!",
+          user: { id: user.id, name: user.name, email: user.email },
+        });
       }
     );
   } catch (error) {

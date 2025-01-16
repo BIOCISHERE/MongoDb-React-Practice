@@ -27,7 +27,7 @@ const SignUp = () => {
     e.preventDefault();
     const { name, email, password } = data;
     try {
-      const { data } = await axios.post("http://localhost:8080/api/user", {
+      const { data } = await axios.post("http://localhost:8080/api/user/register", {
         name,
         email,
         password,
@@ -37,7 +37,7 @@ const SignUp = () => {
         toast.error(data.message);
       } else {
         setData({ name: "", email: "", password: "" });
-        toast.success("Login successful. Welcome!");
+        toast.success("Sign up successful. Welcome!");
         redirectManager();
       }
     } catch (error) {

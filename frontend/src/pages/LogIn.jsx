@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import Context from "../store/Context.jsx";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const LogIn = () => {
   const { store, actions } = useContext(Context);
@@ -12,7 +14,7 @@ const LogIn = () => {
 
   const [isShow, setIsShow] = useState(false);
 
-  const navigate = useNavigate();
+  const redirect = useNavigate();
 
   const redirectManager = () => {
     setTimeout(() => {
@@ -30,8 +32,19 @@ const LogIn = () => {
 
   const logInRequest = async (e) => {
     e.preventDefault();
-    {
-      /* Finish the LogIn in the backend before continuing */
+    try {
+      const response = await axios.post("http://localhost:8080/api/user/login", isData);
+
+      if (!response.data.success) {
+        toast.error(response.data.message);
+      } else {
+        setIsData({ email: "", password: "" });
+        toast.success(response.data.message);
+        redirectManager();
+      }
+    } catch (error) {
+      toast.error("Unknown error occurred. Please try again later.");
+      console.log(error);
     }
   };
 
