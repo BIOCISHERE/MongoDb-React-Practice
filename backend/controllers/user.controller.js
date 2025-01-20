@@ -3,17 +3,16 @@ import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 
 // Return all users endpoint
-export const getUsers = async (req, res) => {
-  try {
-    // Get all saved users
-    const user = await User.find({});
-    // Return a response with all the users data
-    res.json({ success: true, data: user });
-  } catch (error) {
-    // If error, we print it into the console
-    console.log("Error in fetching users:", error.message);
-    // Return a response, to indicate that something failed on the server side
-    res.json({ success: false, message: "Server Error" });
+export const getProfile = async (req, res) => {
+  const token = req.cookie;
+
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
+      if (err) throw err;
+      res.json(user);
+    });
+  } else {
+    res.json(null);
   }
 };
 
