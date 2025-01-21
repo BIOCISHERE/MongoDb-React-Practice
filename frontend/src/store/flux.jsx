@@ -6,13 +6,9 @@ const getState = ({ getStore, getActions, setStore }) => {
   // In Actions, we will save functions to be used globally in the project.
   return {
     store: {
-      test: "test",
+      user: null,
       cart: {},
       cartSizes: {},
-      message: ["test"],
-      id: null,
-      token: null,
-      user: null,
       shipping: 1,
       fullResponse: [],
       womenProducts: [],
@@ -20,17 +16,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       footwearProducts: [],
     },
     actions: {
-      getMessage: async () => {
-        try {
-          // fetching data from the backend
-          const resp = await axios.get("http://localhost:8080/api");
-          setStore({ message: resp.data.fruits });
-          // don't forget to return something, that is how the async resolves
-          return resp;
-        } catch (error) {
-          console.log("Error loading message from backend", error);
-        }
-      },
       linkManager: (num) => {
         // We use this func to redirect the user to it's desired product.
         return `/products/${num}`;
@@ -273,6 +258,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         updateShipping = Number(num);
 
         setStore({ shipping: updateShipping });
+      },
+      getUserProfile: () => {
+        const store = getStore();
+        let userData = store.user;
+
+        if (!userData) {
+          axios.get("http://localhost:8080/api/user/profile").then((data) => {
+            setStore({ user: data });
+          });
+        }
       },
     },
   };
