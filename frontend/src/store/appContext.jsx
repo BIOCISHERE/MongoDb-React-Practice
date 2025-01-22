@@ -18,6 +18,7 @@ export default function InjectContext(PassedComponent) {
 
     useEffect(() => {
       state.actions.fetchProducts();
+      state.actions.getUserProfile();
     }, []);
 
     return (
