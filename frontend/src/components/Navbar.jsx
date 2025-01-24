@@ -127,7 +127,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item me-1">
-              <Link className="nav-link fauxText" to="/">
+              <Link className="nav-link fauxText" to="/favorites">
                 Favorites
               </Link>
             </li>
