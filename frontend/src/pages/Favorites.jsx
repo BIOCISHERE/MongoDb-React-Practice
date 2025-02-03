@@ -7,20 +7,21 @@ const Favorites = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-10 mx-auto">
-          <div
-            className="container-fluid text-center"
-            style={{ marginTop: "2rem", marginBottom: "2rem" }}
-          >
+          <div className="container-fluid text-center" style={{ marginTop: "2rem" }}>
             <h1>USERNAME's Favorites</h1>
+            <Link to="/" className="fauxLetters">
+              Return to Home
+            </Link>
+            <br />
             <span>Want to add more products?</span>
             <br />
-            <Link to="/women-products" className="mx-1 fauxLetters">
+            <Link to="/women-products" className="mx-2 fauxLetters">
               Women Products
             </Link>
-            <Link to="/men-products" className="mx-1 fauxLetters">
+            <Link to="/men-products" className="mx-2 fauxLetters">
               Men Products
             </Link>
-            <Link to="/footwear-products" className="mx-1 fauxLetters">
+            <Link to="/footwear-products" className="mx-2 fauxLetters">
               Footwear Products
             </Link>
           </div>
