@@ -17,6 +17,7 @@ import ShoppingCart from "./pages/ShoppingCart.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import LogIn from "./pages/LogIn.jsx";
 import Favorites from "./pages/Favorites.jsx";
+import Orders from "./pages/Orders.jsx";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/products/:id" element={<ProductView />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/orders" element={<Orders />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     )

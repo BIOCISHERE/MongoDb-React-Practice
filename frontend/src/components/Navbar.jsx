@@ -119,7 +119,7 @@ const Navbar = () => {
               </ul>
             </li>
             <li className="nav-item me-1">
-              <Link className="nav-link fauxText" to="/">
+              <Link className="nav-link fauxText" to="/orders">
                 <span className="me-1">
                   <FaTruck />
                 </span>
