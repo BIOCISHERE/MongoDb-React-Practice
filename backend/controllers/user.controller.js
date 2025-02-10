@@ -96,3 +96,18 @@ export const loginUser = async (req, res) => {
     console.log(error);
   }
 };
+
+// Add product to favorite
+export const addFavorite = async (req, res) => {
+  try {
+    const { userID, productID } = req.body;
+    // Check if user id is given
+    if (!userID) {
+      return res.json({ success: false, message: "User id is required" });
+    }
+    //Check if product id is given
+    if (!productID) {
+      return res.json({ success: false, message: "Product id is required" });
+    }
+  } catch (error) {}
+};
