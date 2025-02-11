@@ -109,5 +109,12 @@ export const addFavorite = async (req, res) => {
     if (!productID) {
       return res.json({ success: false, message: "Product id is required" });
     }
-  } catch (error) {}
+    // Search user with id
+    const user = await User.findById(userID);
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
