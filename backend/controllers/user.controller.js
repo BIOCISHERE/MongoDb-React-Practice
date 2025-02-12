@@ -93,11 +93,14 @@ export const loginUser = async (req, res) => {
       }
     );
   } catch (error) {
+    // If error, we print it into the console
     console.log(error);
+    // Return a response, to indicate that something failed on the server side
+    return res.json({ success: false, message: "Server error" });
   }
 };
 
-// Add product to favorite
+// Add product to user favorite endpoint
 export const addFavorite = async (req, res) => {
   try {
     const { userID, productID } = req.body;
@@ -109,12 +112,21 @@ export const addFavorite = async (req, res) => {
     if (!productID) {
       return res.json({ success: false, message: "Product id is required" });
     }
-    // Search user with id
+    // Check if user exist
     const user = await User.findById(userID);
     if (!user) {
       return res.json({ success: false, message: "User not found" });
     }
+    // Add product to user favorites
+    await user.favorites.addToSet(productID);
+    // Save changes
+    await user.save();
+    // Return a response indicating that user favorites has been updated
+    return res.json({ success: true, message: "Added to favorites successfully" });
   } catch (error) {
+    // If error, we print it into the console
     console.log(error);
+    // Return a response, to indicate that something failed on the server side
+    return res.json({ success: false, message: "Server error" });
   }
 };
