@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 import { FaRegStar, FaStar } from "react-icons/fa";
 
 const getState = ({ getStore, getActions, setStore }) => {
@@ -267,6 +268,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           axios.get("http://localhost:8080/api/user/profile").then((data) => {
             setStore({ user: data });
           });
+        }
+      },
+      addUserFavorite: (userId, productId) => {
+        const store = getStore();
+        try {
+        } catch (error) {
+          toast.error("Unknown error occurred. Please try again later.");
+          console.log(error);
         }
       },
     },
