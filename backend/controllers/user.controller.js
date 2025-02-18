@@ -130,3 +130,14 @@ export const addFavorite = async (req, res) => {
     return res.json({ success: false, message: "Server error" });
   }
 };
+
+export const removeFavorite = async (req, res) => {
+  try {
+    const { userID, productID } = req.body;
+  } catch (error) {
+    // If error, we print it into the console
+    console.log(error);
+    // Return a response, to indicate that something failed on the server side
+    return res.json({ success: false, message: "Server error" });
+  }
+};
