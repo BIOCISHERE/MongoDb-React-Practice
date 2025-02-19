@@ -118,7 +118,7 @@ export const addFavorite = async (req, res) => {
       return res.json({ success: false, message: "User not found" });
     }
     // Add product to user favorites
-    await user.favorites.addToSet(productID);
+    user.favorites.push(productID);
     // Save changes
     await user.save();
     // Return a response indicating that user favorites has been updated
