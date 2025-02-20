@@ -134,6 +134,25 @@ export const addFavorite = async (req, res) => {
 export const removeFavorite = async (req, res) => {
   try {
     const { userID, productID } = req.body;
+    // Check if user id is given
+    if (!userID) {
+      return res.json({ success: false, message: "User id is required" });
+    }
+    // Check if product id is given
+    if (!productID) {
+      return res.json({ success: false, message: "Product id is required" });
+    }
+    // Check if user exist
+    const user = await User.findById(userID);
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
+    // Remove product from user favorites
+    await user.favorites.pull(productID);
+    // Save changes
+    await user.save();
+    // Return a response indicating that user favorites has been updated
+    return res.json({ success: true, message: "Product removed from user favorites" });
   } catch (error) {
     // If error, we print it into the console
     console.log(error);
