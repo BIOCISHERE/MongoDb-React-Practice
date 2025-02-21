@@ -152,7 +152,7 @@ export const removeFavorite = async (req, res) => {
     // Save changes
     await user.save();
     // Return a response indicating that user favorites has been updated
-    return res.json({ success: true, message: "Product removed from user favorites" });
+    return res.json({ success: true, message: "Product removed from favorites" });
   } catch (error) {
     // If error, we print it into the console
     console.log(error);
