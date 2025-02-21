@@ -14,6 +14,6 @@ router.post("/register", registerUser);
 
 router.post("/login", loginUser);
 
-router.put("/favorites", addFavorite);
+router.put("/a-favorites", addFavorite);
 
 export default router;
