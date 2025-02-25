@@ -273,7 +273,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       addUserFavorite: async (userId, productId) => {
         const store = getStore();
         try {
-          const request = await axios.put("http://localhost:8080/api/user/favorites", {
+          const request = await axios.put("http://localhost:8080/api/user/a-favorites", {
             userID: userId,
             productID: productId,
           });
@@ -283,6 +283,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           } else {
             toast.success(request.data.message);
           }
+        } catch (error) {
+          toast.error("Unknown error occurred. Please try again later.");
+          console.log(error);
+        }
+      },
+      removeUserFavorite: async (userId, productId) => {
+        try {
         } catch (error) {
           toast.error("Unknown error occurred. Please try again later.");
           console.log(error);
