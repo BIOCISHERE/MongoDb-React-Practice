@@ -131,6 +131,7 @@ export const addFavorite = async (req, res) => {
   }
 };
 
+// Remove product from user favorite endpoint
 export const removeFavorite = async (req, res) => {
   try {
     const { userID, productID } = req.body;
@@ -153,6 +154,18 @@ export const removeFavorite = async (req, res) => {
     await user.save();
     // Return a response indicating that user favorites has been updated
     return res.json({ success: true, message: "Product removed from favorites" });
+  } catch (error) {
+    // If error, we print it into the console
+    console.log(error);
+    // Return a response, to indicate that something failed on the server side
+    return res.json({ success: false, message: "Server error" });
+  }
+};
+
+// Update all user shipping info endpoint
+export const updateShippingInfo = async (req, res) => {
+  try {
+    const { adress, apartment, country, state, city, postal } = req.body;
   } catch (error) {
     // If error, we print it into the console
     console.log(error);
