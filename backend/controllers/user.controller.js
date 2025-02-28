@@ -166,6 +166,19 @@ export const removeFavorite = async (req, res) => {
 export const updateShippingInfo = async (req, res) => {
   try {
     const { adress, apartment, country, state, city, postal } = req.body;
+    if (!adress) {
+      return res.json({ success: false, message: "Adress is required" });
+    } else if (!apartment) {
+      return res.json({ success: false, message: "Apartment is required" });
+    } else if (!country) {
+      return res.json({ success: false, message: "Country is required" });
+    } else if (!state) {
+      return res.json({ success: false, message: "State is required" });
+    } else if (!city) {
+      return res.json({ success: false, message: "City is required" });
+    } else if (!postal) {
+      return res.json({ success: false, message: "Postal is required" });
+    }
   } catch (error) {
     // If error, we print it into the console
     console.log(error);
