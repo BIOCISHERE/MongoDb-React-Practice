@@ -3,8 +3,14 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema(
   {
     name: {
-      type: String,
-      required: true,
+      firstName: {
+        type: String,
+        required: true,
+      },
+      lastName: {
+        type: String,
+        required: true,
+      },
     },
     email: {
       type: String,
@@ -20,29 +26,13 @@ const userSchema = new mongoose.Schema(
         ref: "Product",
       },
     ],
-    adress: {
-      type: String,
-      required: false,
-    },
-    apartment: {
-      type: String,
-      required: false,
-    },
-    country: {
-      type: String,
-      required: false,
-    },
-    state: {
-      type: String,
-      required: false,
-    },
-    city: {
-      type: String,
-      required: false,
-    },
-    postal: {
-      type: Number,
-      required: false,
+    shipping: {
+      adress: String,
+      apartment: String,
+      country: String,
+      state: String,
+      city: String,
+      postal: Number,
     },
   },
   {
