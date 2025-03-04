@@ -2,7 +2,7 @@ import { comparePassword, hashPassword } from "../auth.js";
 import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 
-// Return all users endpoint
+// Return user info endpoint
 export const getProfile = async (req, res) => {
   const token = req.cookie;
 
@@ -20,9 +20,13 @@ export const getProfile = async (req, res) => {
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    // Check if name was entered
-    if (!name) {
-      return res.json({ success: false, message: "Name is required" });
+    // Check if firstname was entered
+    if (!name.firstName) {
+      return res.json({ success: false, message: "Firstname is required" });
+    }
+    // Check if lastname was entered
+    if (!name.lastName) {
+      return res.json({ success: false, message: "Lastname is required" });
     }
     // Check if the email is a empty string
     if (!email) {
