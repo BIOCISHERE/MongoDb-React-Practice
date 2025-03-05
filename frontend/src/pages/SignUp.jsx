@@ -8,7 +8,10 @@ const SignUp = () => {
   const { store, actions } = useContext(Context);
 
   const [data, setData] = useState({
-    name: "",
+    name: {
+      firstName: "",
+      lastName: "",
+    },
     email: "",
     password: "",
   });
@@ -31,7 +34,7 @@ const SignUp = () => {
       if (!request.data.success) {
         toast.error(request.data.message);
       } else {
-        setData({ name: "", email: "", password: "" });
+        setData({ name: { firstName: "", lastName: "" }, email: "", password: "" });
         toast.success(request.data.message);
         redirectManager();
       }
@@ -53,20 +56,37 @@ const SignUp = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-6 border border-dark-subtle rounded mx-auto my-4">
-          <h1 className="text-center">Sign Up</h1>
+          <h1 className="text-center">Sign Up {data.name.lastName}</h1>
           <form onSubmit={signUpRequest}>
             <div className="mb-3">
-              <label htmlFor="dataName" className="form-label ms-2">
-                Name
+              <label htmlFor="dataFirstname" className="form-label ms-2">
+                Firstname
               </label>
               <input
-                id="dataName"
+                id="dataFistname"
                 type="text"
                 className="form-control border border-dark-subtle"
-                placeholder="Enter name.."
-                value={data.name}
-                onChange={(e) => setData({ ...data, name: e.target.value })}
+                placeholder="Enter firstname.."
+                value={data.name.firstName}
+                onChange={(e) =>
+                  setData({ ...data, name: { ...data.name, firstName: e.target.value } })
+                }
               />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="dataLastname" className="form-label ms-2">
+                Lastname
+              </label>
+              <input
+                id="dataLastname"
+                type="text"
+                className="form-control border border-dark-subtle"
+                placeholder="Enter lastname..."
+                value={data.name.lastName}
+                onChange={(e) =>
+                  setData({ ...data, name: { ...data.name, lastName: e.target.value } })
+                }
+              ></input>
             </div>
             <div className="mb-3">
               <label htmlFor="dataEmail" className="form-label ms-2">
