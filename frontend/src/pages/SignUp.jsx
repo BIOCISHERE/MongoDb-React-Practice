@@ -57,7 +57,9 @@ const SignUp = () => {
       <div className="row">
         <div className="col-6 border border-dark-subtle rounded mx-auto my-4">
           <h1 className="text-center">Sign Up</h1>
+          {/* Here the signUpRequest form starts */}
           <form onSubmit={signUpRequest}>
+            {/* Here is where the firstname and lastname inputs div starts */}
             <div className="mb-3">
               <div className="container-fluid">
                 <div className="row">
@@ -94,7 +96,7 @@ const SignUp = () => {
                 </div>
               </div>
             </div>
-            <div className="mb-3"></div>
+            {/* Here is where the email input div starts */}
             <div className="mb-3">
               <label htmlFor="dataEmail" className="form-label ms-2">
                 Email
@@ -108,6 +110,7 @@ const SignUp = () => {
                 onChange={(e) => setData({ ...data, email: e.target.value })}
               />
             </div>
+            {/* Here is where the password input div starts */}
             <div className="mb-3">
               <label htmlFor="dataPassword" className="form-label ms-2">
                 Password
