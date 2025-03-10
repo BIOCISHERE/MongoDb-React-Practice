@@ -169,25 +169,12 @@ export const removeFavorite = async (req, res) => {
 // Update all user shipping info endpoint
 export const updateShippingInfo = async (req, res) => {
   try {
-    const { userID, adress, apartment, country, state, city, postal } = req.body;
+    const { userID, newShipping } = req.body;
     // Check if everything required is given
     if (!userID) {
       return res.json({ success: false, message: "User id is required" });
-    } else if (!adress) {
-      return res.json({ success: false, message: "Adress is required" });
-    } else if (!apartment) {
-      return res.json({ success: false, message: "Apartment is required" });
-    } else if (!country) {
-      return res.json({ success: false, message: "Country is required" });
-    } else if (!state) {
-      return res.json({ success: false, message: "State is required" });
-    } else if (!city) {
-      return res.json({ success: false, message: "City is required" });
-    } else if (!postal) {
-      return res.json({ success: false, message: "Postal is required" });
     }
     // Check if user exist
-    // File is yellow because there is some files that havent been commited yet, dont worry
   } catch (error) {
     // If error, we print it into the console
     console.log(error);
