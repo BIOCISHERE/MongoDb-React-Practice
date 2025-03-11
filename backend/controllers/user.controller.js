@@ -174,6 +174,16 @@ export const updateShippingInfo = async (req, res) => {
     if (!userID) {
       return res.json({ success: false, message: "User id is required" });
     }
+    // Check if required shipping info has been given
+    if (!newShipping.adress) {
+      return res.json({ success: false, message: "Adress is required" });
+    } else if (!newShipping.country) {
+      return res.json({ success: false, message: "Country is required" });
+    } else if (!newShipping.state) {
+      return res.json({ success: false, message: "State is required" });
+    } else if (!newShipping.city) {
+      return res.json({ success: false, message: "City is required" });
+    }
     // Check if user exist
   } catch (error) {
     // If error, we print it into the console
