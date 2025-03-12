@@ -185,6 +185,9 @@ export const updateShippingInfo = async (req, res) => {
       return res.json({ success: false, message: "City is required" });
     }
     // Check if user exist
+    const user = await User.findById(userID);
+
+    user.shipping = newShipping;
   } catch (error) {
     // If error, we print it into the console
     console.log(error);
