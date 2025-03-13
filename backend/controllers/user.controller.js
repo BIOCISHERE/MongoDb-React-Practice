@@ -186,8 +186,15 @@ export const updateShippingInfo = async (req, res) => {
     }
     // Check if user exist
     const user = await User.findById(userID);
-
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
+    // replace old shipping with new one, will change later
     user.shipping = newShipping;
+    // Save user
+    await user.save();
+    // Return a response indicating that user shipping has been updated
+    return res.json({ success: true, message: "Shipping updated" });
   } catch (error) {
     // If error, we print it into the console
     console.log(error);
