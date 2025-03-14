@@ -202,3 +202,15 @@ export const updateShippingInfo = async (req, res) => {
     return res.json({ success: false, message: "Server error" });
   }
 };
+
+// Update user name info endpoint
+export const updateUserName = async (req, res) => {
+  try {
+    const { userID, name } = req.body;
+  } catch (error) {
+    // If error, we print it into the console
+    console.log(error);
+    // Return a response, to indicate that something failed on the server side
+    return res.json({ success: false, message: "Server error" });
+  }
+};
