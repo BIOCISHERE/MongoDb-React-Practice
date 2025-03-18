@@ -18,6 +18,7 @@ import SignUp from "./pages/SignUp.jsx";
 import LogIn from "./pages/LogIn.jsx";
 import Favorites from "./pages/Favorites.jsx";
 import Orders from "./pages/Orders.jsx";
+import Shipping from "./pages/Shipping.jsx";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/shipping" element={<Shipping />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     )

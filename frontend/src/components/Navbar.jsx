@@ -110,8 +110,8 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="/">
-                        Test
+                      <Link className="dropdown-item" to="/shipping">
+                        Shipping
                       </Link>
                     </li>
                   </>
