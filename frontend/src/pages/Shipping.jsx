@@ -27,13 +27,36 @@ const Shipping = () => {
                 id="dataAdress"
                 type="text"
                 className="form-control border border-dark-subtle"
-                placeholder="Enter adress ..."
+                placeholder="Enter adress..."
                 value={isData.adress}
                 onChange={(e) => setIsData({ ...isData, adress: e.target.value })}
               />
             </div>
             <div className="mb-3">
-              <h1>next input</h1>
+              <label htmlFor="dataApartment" className="form-label ms-2">
+                Apartment
+              </label>
+              <input
+                id="dataApartment"
+                type="text"
+                className="form-control border border-dark-subtle"
+                placeholder="Enter apartment..."
+                value={isData.apartment}
+                onChange={(e) => setIsData({ ...isData, apartment: e.target.value })}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="dataCountry" className="form-label ms-2">
+                Country
+              </label>
+              <input
+                id="dataCountry"
+                type="text"
+                className="form-control border border-dark-subtle"
+                placeholder="Enter country..."
+                value={isData.country}
+                onChange={(e) => setIsData({ ...isData, country: e.target.value })}
+              />
             </div>
           </form>
         </div>
