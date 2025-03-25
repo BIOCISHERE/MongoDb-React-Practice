@@ -58,6 +58,45 @@ const Shipping = () => {
                 onChange={(e) => setIsData({ ...isData, country: e.target.value })}
               />
             </div>
+            <div className="mb-3">
+              <label htmlFor="dataState" className="form-label ms-2">
+                State
+              </label>
+              <input
+                id="dataState"
+                type="text"
+                className="form-control border border-dark-subtle"
+                placeholder="Enter state..."
+                value={isData.state}
+                onChange={(e) => setIsData({ ...isData, state: e.target.value })}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="dataCity" className="form-label ms-2">
+                City
+              </label>
+              <input
+                id="dataCity"
+                type="text"
+                className="form-control border border-dark-subtle"
+                placeholder="Enter city..."
+                value={isData.city}
+                onChange={(e) => setIsData({ ...isData, city: e.target.value })}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="dataPostal" className="form-label ms-2">
+                Postal
+              </label>
+              <input
+                id="dataPostal"
+                type="text"
+                className="form-control border border-dark-subtle"
+                placeholder="Enter postal..."
+                value={isData.postal}
+                onChange={(e) => setIsData({ ...isData, postal: e.target.value })}
+              />
+            </div>
           </form>
         </div>
       </div>
