@@ -97,6 +97,11 @@ const Shipping = () => {
                 onChange={(e) => setIsData({ ...isData, postal: e.target.value })}
               />
             </div>
+            <div className="container-fluid text-center mx-auto">
+              <button type="submit" className="btn btn-dark fauxColor mb-2">
+                Update shipping
+              </button>
+            </div>
           </form>
         </div>
       </div>
