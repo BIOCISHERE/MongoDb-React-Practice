@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const Shipping = () => {
   const [isData, setIsData] = useState({
@@ -12,6 +14,17 @@ const Shipping = () => {
 
   const shippingRequest = async (e) => {
     e.preventDefault();
+    try {
+      const request = await axios.put("http://localhost:8080/api/user/update-shipping", isData);
+
+      if (!request.data.success) {
+        toast.error(request.data.message);
+      } else {
+        setIsData({ adress: "", apartment: "", country: "", state: "", city: "", postal: "" });
+        toast.success(request.data.message);
+        // Here add the redirect
+      }
+    } catch (error) {}
   };
   return (
     <div className="container-fluid">
