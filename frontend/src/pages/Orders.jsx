@@ -13,10 +13,26 @@ const Orders = () => {
               <div className="col">
                 <div className="container-fluid">
                   <div className="row border border-dark-subtle my-1">
-                    <h5>TEST</h5>
+                    <div className="col-4">
+                      <h4>Name</h4>
+                    </div>
+                    <div className="col-4">
+                      <h4>Price</h4>
+                    </div>
+                    <div className="col-4">
+                      <h4>Date</h4>
+                    </div>
                   </div>
                   <div className="row border border-dark-subtle my-1">
-                    <h5>TEST</h5>
+                    <div className="col-4">
+                      <h4>Name Test</h4>
+                    </div>
+                    <div className="col-4">
+                      <h4>Price Test</h4>
+                    </div>
+                    <div className="col-4">
+                      <h4>Date Test</h4>
+                    </div>
                   </div>
                 </div>
               </div>
