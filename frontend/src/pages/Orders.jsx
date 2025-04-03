@@ -12,7 +12,8 @@ const Orders = () => {
             <div className="row">
               <div className="col">
                 <div className="container-fluid">
-                  <div className="row border border-dark-subtle my-1">
+                  {/** This row will be used to show what goes into that column */}
+                  <div className="row">
                     <div className="col-4">
                       <h4>Name</h4>
                     </div>
@@ -23,6 +24,7 @@ const Orders = () => {
                       <h4>Date</h4>
                     </div>
                   </div>
+                  {/** This row will be used to show the ordered products */}
                   <div className="row border border-dark-subtle my-1">
                     <div className="col-4">
                       <h4>Name Test</h4>
