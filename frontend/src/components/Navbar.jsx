@@ -1,11 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import fauxAtelierLogo from "../assets/faux_atelier_logo.png";
 import { Link, NavLink } from "react-router-dom";
 import Context from "../store/Context.jsx";
 import { FaUser, FaTruck, FaShoppingCart } from "react-icons/fa";
+import Cookies from "js-cookie";
 
 const Navbar = () => {
   const { store, actions } = useContext(Context);
+  const [isCookie, setIsCookie] = useState(false);
+
+  useEffect(() => {
+    const getCookie = Cookies.get("token");
+
+    if (getCookie != undefined) {
+      setIsCookie(!isCookie);
+    }
+  }, []);
 
   return (
     <nav className="navbar navbar-expand-lg fauxColor">
@@ -72,7 +82,7 @@ const Navbar = () => {
                 User
               </a>
               <ul className="dropdown-menu">
-                {!store.token ? (
+                {!isCookie ? (
                   <>
                     <li>
                       <Link className="dropdown-item" to="/log-in">
