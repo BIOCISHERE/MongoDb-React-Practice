@@ -23,6 +23,9 @@ const Orders = () => {
                     <div className="col-4">
                       <h4>Date</h4>
                     </div>
+                    <div className="col-4">
+                      <h4>Adress</h4>
+                    </div>
                   </div>
                   {/** This row will be used to show the ordered products */}
                   <div className="row border border-dark-subtle my-1">
@@ -34,6 +37,9 @@ const Orders = () => {
                     </div>
                     <div className="col-4">
                       <h4>Date Test</h4>
+                    </div>
+                    <div className="col-4">
+                      <h4>Adress Test</h4>
                     </div>
                   </div>
                 </div>
