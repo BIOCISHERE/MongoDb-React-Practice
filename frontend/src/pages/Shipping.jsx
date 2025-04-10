@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Shipping = () => {
   const [isData, setIsData] = useState({
@@ -11,6 +12,13 @@ const Shipping = () => {
     city: "",
     postal: "",
   });
+  const redirect = useNavigate();
+
+  const redirectManager = () => {
+    setTimeout(() => {
+      redirect("/");
+    }, "3000");
+  };
 
   const shippingRequest = async (e) => {
     e.preventDefault();
@@ -22,7 +30,7 @@ const Shipping = () => {
       } else {
         setIsData({ adress: "", apartment: "", country: "", state: "", city: "", postal: "" });
         toast.success(request.data.message);
-        // Here add the redirect
+        redirectManager();
       }
     } catch (error) {}
   };
