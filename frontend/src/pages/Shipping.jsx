@@ -12,6 +12,10 @@ const Shipping = () => {
     city: "",
     postal: "",
   });
+  const [isOptional, setIsOptional] = useState({
+    showApartment: false,
+    showPostal: false,
+  });
   const redirect = useNavigate();
 
   const redirectManager = () => {
