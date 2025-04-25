@@ -24,6 +24,12 @@ const Shipping = () => {
     }, "3000");
   };
 
+  const shippingManager = () => {
+    // Im not sure if i should make different endpoints for a call with/without aparment,postal, etc.
+    // In case i make different endpoints then this function will manage to which endpoint to use
+    // depending if there is apartment of postal.
+  };
+
   const shippingRequest = async (e) => {
     e.preventDefault();
     try {
