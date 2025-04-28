@@ -27,7 +27,12 @@ const Shipping = () => {
   const shippingManager = () => {
     // Im not sure if i should make different endpoints for a call with/without aparment,postal, etc.
     // In case i make different endpoints then this function will manage to which endpoint to use
-    // depending if there is apartment of postal.
+    // depending if there is apartment or postal.
+    if (isOptional.showApartment && isOptional.showPostal) {
+    } else if (isOptional.showApartment) {
+    } else if (isOptional.showPostal) {
+    } else {
+    }
   };
 
   const shippingRequest = async (e) => {
