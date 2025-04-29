@@ -29,9 +29,13 @@ const Shipping = () => {
     // In case i make different endpoints then this function will manage to which endpoint to use
     // depending if there is apartment or postal.
     if (isOptional.showApartment && isOptional.showPostal) {
+      // This endpoint is all the required and optional info.
     } else if (isOptional.showApartment) {
+      // This endpoint is all the required and the apartment info.
     } else if (isOptional.showPostal) {
+      // This endpoint is all the required and the postal info.
     } else {
+      // This endpoint is all the required info.
     }
   };
 
