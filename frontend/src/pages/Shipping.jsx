@@ -24,18 +24,39 @@ const Shipping = () => {
     }, "3000");
   };
 
-  const shippingManager = () => {
+  const shippingManager = async (e) => {
+    e.preventDefault();
     // Im not sure if i should make different endpoints for a call with/without aparment,postal, etc.
     // In case i make different endpoints then this function will manage to which endpoint to use
     // depending if there is apartment or postal.
     if (isOptional.showApartment && isOptional.showPostal) {
       // This endpoint is all the required and optional info.
+      try {
+      } catch (error) {
+        toast.error("Unknown error occurred. Please try again later.");
+        console.log(error);
+      }
     } else if (isOptional.showApartment) {
       // This endpoint is all the required and the apartment info.
+      try {
+      } catch (error) {
+        toast.error("Unknown error occurred. Please try again later.");
+        console.log(error);
+      }
     } else if (isOptional.showPostal) {
       // This endpoint is all the required and the postal info.
+      try {
+      } catch (error) {
+        toast.error("Unknown error occurred. Please try again later.");
+        console.log(error);
+      }
     } else {
       // This endpoint is all the required info.
+      try {
+      } catch (error) {
+        toast.error("Unknown error occurred. Please try again later.");
+        console.log(error);
+      }
     }
   };
 
