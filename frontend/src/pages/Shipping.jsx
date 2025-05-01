@@ -53,6 +53,15 @@ const Shipping = () => {
     } else {
       // This endpoint is all the required info.
       try {
+        const request = await axios.put("http://localhost:8080/api/user/update-shipping", isData);
+
+        if (!request.data.success) {
+          toast.error(request.data.message);
+        } else {
+          setIsData({ adress: "", apartment: "", country: "", state: "", city: "", postal: "" });
+          toast.success(request.data.message);
+          redirectManager();
+        }
       } catch (error) {
         toast.error("Unknown error occurred. Please try again later.");
         console.log(error);
