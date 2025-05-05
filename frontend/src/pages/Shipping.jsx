@@ -31,16 +31,16 @@ const Shipping = () => {
     // depending if there is apartment or postal.
     if (isOptional.showApartment && isOptional.showPostal) {
       // This endpoint is all the required and optional info.
-      return "1";
+      return "http://localhost:8080/api/user/update-shipping";
     } else if (isOptional.showApartment) {
       // This endpoint is all the required and the apartment info.
-      return "2";
+      return "http://localhost:8080/api/user/update-shipping"; // <-- CHANGE THIS
     } else if (isOptional.showPostal) {
       // This endpoint is all the required and the postal info.
-      return "3";
+      return "http://localhost:8080/api/user/update-shipping"; // <-- CHANGE THIS
     } else {
       // This endpoint is all the required info.
-      return "4";
+      return "http://localhost:8080/api/user/update-shipping"; // <-- CHANGE THIS
     }
   };
 
