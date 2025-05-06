@@ -47,7 +47,7 @@ const Shipping = () => {
   const shippingRequest = async (e) => {
     e.preventDefault();
     try {
-      const request = await axios.put("http://localhost:8080/api/user/update-shipping", isData);
+      const request = await axios.put(shippingManager(), isData);
 
       if (!request.data.success) {
         toast.error(request.data.message);
