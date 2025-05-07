@@ -34,13 +34,13 @@ const Shipping = () => {
       return "http://localhost:8080/api/user/update-shipping";
     } else if (isOptional.showApartment) {
       // This endpoint is all the required and the apartment info.
-      return "http://localhost:8080/api/user/update-shipping"; // <-- CHANGE THIS
+      return "http://localhost:8080/api/user/update-shipping-1"; // <-- Replace the correct endpoint eventually
     } else if (isOptional.showPostal) {
       // This endpoint is all the required and the postal info.
-      return "http://localhost:8080/api/user/update-shipping"; // <-- CHANGE THIS
+      return "http://localhost:8080/api/user/update-shipping-2"; // <-- Replace the correct endpoint eventually
     } else {
       // This endpoint is all the required info.
-      return "http://localhost:8080/api/user/update-shipping"; // <-- CHANGE THIS
+      return "http://localhost:8080/api/user/update-shipping-3"; // <-- Replace the correct endpoint eventually
     }
   };
 
