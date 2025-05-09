@@ -56,7 +56,10 @@ const Shipping = () => {
         toast.success(request.data.message);
         redirectManager();
       }
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Unknown error occurred. Please try again later.");
+      console.log(error);
+    }
   };
   return (
     <div className="container-fluid">
