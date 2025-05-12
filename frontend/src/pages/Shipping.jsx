@@ -93,6 +93,19 @@ const Shipping = () => {
                 onChange={(e) => setIsData({ ...isData, apartment: e.target.value })}
               />
             </div>
+            <div className="form-check">
+              <input
+                id="checkboxApartment"
+                type="checkbox"
+                className="form-check-input border border-dark"
+                onClick={() =>
+                  setIsOptional({ ...isOptional, showApartment: !isOptional.showApartment })
+                }
+              />
+              <label htmlFor="checkboxApartment" className="form-check-label">
+                Show Apartment
+              </label>
+            </div>
             <div className="mb-3">
               <label htmlFor="dataCountry" className="form-label ms-2">
                 Country
