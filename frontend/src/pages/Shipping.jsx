@@ -158,6 +158,17 @@ const Shipping = () => {
                 onChange={(e) => setIsData({ ...isData, postal: e.target.value })}
               />
             </div>
+            <div className="form-check">
+              <input
+                id="checkboxPortal"
+                type="checkbox"
+                className="form-check-input border border-dark"
+                onClick={() => setIsOptional({ ...isOptional, showPostal: !isOptional.showPostal })}
+              />
+              <label htmlFor="checkboxPostal" className="form-check-label">
+                Show Postal
+              </label>
+            </div>
             <div className="container-fluid text-center mx-auto">
               <button type="submit" className="btn btn-dark fauxColor mb-2">
                 Update shipping
