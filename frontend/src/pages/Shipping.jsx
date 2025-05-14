@@ -24,6 +24,14 @@ const Shipping = () => {
     }, "3000");
   };
 
+  const showHideOptional = () => {
+    if (!isOptional.showApartment) {
+      return "d-none";
+    } else {
+      return "mb-3";
+    }
+  };
+
   const shippingManager = async (e) => {
     e.preventDefault();
     // Im not sure if i should make different endpoints for a call with/without aparment,postal, etc.
