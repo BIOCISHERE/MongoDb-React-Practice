@@ -25,7 +25,11 @@ const Shipping = () => {
   };
 
   const showHideOptional = () => {
-    if (!isOptional.showApartment) {
+    if (!isOptional.showApartment && !isOptional.showPostal) {
+      return "d-none";
+    } else if (!isOptional.showApartment) {
+      return "d-none";
+    } else if (!isOptional.showPostal) {
       return "d-none";
     } else {
       return "mb-3";
