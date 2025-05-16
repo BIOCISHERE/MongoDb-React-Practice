@@ -24,15 +24,11 @@ const Shipping = () => {
     }, "3000");
   };
 
-  const showHideOptional = () => {
-    if (!isOptional.showApartment && !isOptional.showPostal) {
-      return "d-none";
-    } else if (!isOptional.showApartment) {
-      return "d-none";
-    } else if (!isOptional.showPostal) {
-      return "d-none";
-    } else {
+  const showHideApartment = () => {
+    if (isOptional.showApartment) {
       return "mb-3";
+    } else {
+      return "d-none";
     }
   };
 
