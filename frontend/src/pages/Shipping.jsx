@@ -32,6 +32,14 @@ const Shipping = () => {
     }
   };
 
+  const showHidePostal = () => {
+    if (isOptional.showPostal) {
+      return "mb-3";
+    } else {
+      return "d-none";
+    }
+  };
+
   const shippingManager = async (e) => {
     e.preventDefault();
     // Im not sure if i should make different endpoints for a call with/without aparment,postal, etc.
@@ -69,6 +77,7 @@ const Shipping = () => {
       console.log(error);
     }
   };
+
   return (
     <div className="container-fluid">
       <div className="row">
