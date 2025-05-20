@@ -26,7 +26,7 @@ const Shipping = () => {
 
   const showHideApartment = () => {
     if (isOptional.showApartment) {
-      return "mb-3";
+      return "form-check";
     } else {
       return "d-none";
     }
@@ -34,7 +34,7 @@ const Shipping = () => {
 
   const showHidePostal = () => {
     if (isOptional.showPostal) {
-      return "mb-3";
+      return "form-check";
     } else {
       return "d-none";
     }
