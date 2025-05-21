@@ -110,7 +110,7 @@ const Shipping = () => {
                 onChange={(e) => setIsData({ ...isData, apartment: e.target.value })}
               />
             </div>
-            <div className="form-check">
+            <div className={showHideApartment()}>
               <input
                 id="checkboxApartment"
                 type="checkbox"
